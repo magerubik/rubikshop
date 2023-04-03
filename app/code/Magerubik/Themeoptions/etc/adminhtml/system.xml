@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Magerubik" translate="label" sortOrder="111">
+            <label>Magerubik Extensions</label>
+        </tab>
+        <section id="mrThemes" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Magerubik Themeoptions</label>
+            <tab>Magerubik</tab>
+            <resource>Magerubik_Themeoptions::config_themeoptions</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+                <field id="text_color" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+					<validate>mr-color</validate>
+					<comment>
+                        <![CDATA[
+                            <script type="text/javascript">
+                                require(['themeoptions']);
+                            </script>
+                        ]]>
+                    </comment>
+                </field>
+				<field id="body_background_image_enable" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable body background image</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="body_background_image" translate="label" type="image" sortOrder="3"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Body Background Image</label>
+                    <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">themeoptions</upload_dir>
+                    <base_url type="media" scope_info="1">themeoptions</base_url>
+                </field>
+			</group>
+            <group id="font" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Font</label>
+                <field id="size" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Basic Font Size : </label>
+                    <source_model>Magerubik\Themeoptions\Model\System\Config\Size</source_model>
+                </field>
+                <field id="google" translate="label comment" type="select" sortOrder="10"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base Font Family - Google Fonts : </label>
+                    <source_model>Magerubik\Themeoptions\Model\System\Config\Google</source_model>
+                </field>
+            </group>
+        </section>     
+    </system>
+</config>
